@@ -15,8 +15,6 @@
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
-            font-size: 3em;
-            text-align: center;
             background-color: #f0f0f0;
             /* 배경색을 부드럽게 */
         }
@@ -24,6 +22,7 @@
         h1 {
             margin: 0;
             padding: 0;
+            text-align: center;
         }
 
         /* 글자 색상에 랜덤 적용될 span 태그 스타일 */
@@ -36,6 +35,20 @@
         /* 두 줄을 감싸는 컨테이너 스타일 */
         .line {
             display: block;
+        }
+
+        /* 반응형 글자 크기 설정 (폰트 크기를 vw 단위로 설정) */
+        h1 {
+            font-size: 10vw;
+            /* 화면 너비에 맞춰 폰트 크기 설정 */
+        }
+
+        /* 모바일 화면에서 글자 크기가 너무 커지지 않도록 max-width 설정 */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 12vw;
+                /* 작은 화면에서는 더 작은 크기 */
+            }
         }
     </style>
 </head>
