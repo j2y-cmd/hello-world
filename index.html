@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World with Random Colors</title>
+    <style>
+        /* 전체 화면을 채우고, 수평 및 수직 중앙 정렬 */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            font-size: 3em;
+            text-align: center;
+            background-color: #f0f0f0;
+            /* 배경색을 부드럽게 */
+        }
+
+        h1 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 글자 색상에 랜덤 적용될 span 태그 스타일 */
+        span {
+            display: inline-block;
+            transition: color 0.5s ease;
+            /* 색 변화가 부드럽게 */
+        }
+
+        /* 두 줄을 감싸는 컨테이너 스타일 */
+        .line {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <span id="hello-line" class="line"></span>
+        <span id="world-line" class="line"></span>
+    </h1>
+
+    <script>
+        // 랜덤 색상 생성 함수
+        function getRandomColor() {
+            const colors = [
+                '#FF6347', '#FFD700', '#32CD32', '#1E90FF', '#9400D3', '#FF4500',
+                '#FF1493', '#00BFFF', '#7FFF00', '#FF69B4', '#8A2BE2', '#FF8C00'
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // "Hello"와 "World"를 각각 한 줄씩 span으로 감싸기
+        const helloText = 'Hello';
+        const worldText = 'World';
+        const helloLine = document.getElementById('hello-line');
+        const worldLine = document.getElementById('world-line');
+
+        function setTextWithRandomColors() {
+            // 첫 번째 줄 "Hello" 처리
+            helloLine.innerHTML = '';
+            for (let i = 0; i < helloText.length; i++) {
+                const span = document.createElement('span');
+                span.textContent = helloText[i];
+                span.style.color = getRandomColor();  // 랜덤 색상 적용
+                helloLine.appendChild(span);
+            }
+
+            // 두 번째 줄 "World" 처리
+            worldLine.innerHTML = '';
+            for (let i = 0; i < worldText.length; i++) {
+                const span = document.createElement('span');
+                span.textContent = worldText[i];
+                span.style.color = getRandomColor();  // 랜덤 색상 적용
+                worldLine.appendChild(span);
+            }
+        }
+
+        // 페이지 로드 시 랜덤 색상으로 텍스트 설정
+        window.onload = setTextWithRandomColors;
+    </script>
+</body>
+
+</html>
